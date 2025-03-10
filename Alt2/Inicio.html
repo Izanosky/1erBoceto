@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Vegeez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1f1f1f;
+            color: #00bcd4;
+            width: 100%;
+            padding: 2.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        section {
+            background-color: #1f1f1f;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        section:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #00bcd4;
+        }
+        p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+        }
+        button {
+            background-color: #00bcd4;
+            color: #121212;
+            border: none;
+            padding: 14px 30px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #0097a7;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a Vegeez</h1>
+    </header>
+    
+    <main>
+        <section id="intro">
+            <h2>¿Qué es Vegeez?</h2>
+            <p>Vegeez es una aplicación de cálculo de menús que te ayudará a planificar tus comidas para toda la semana.</p>
+        </section>
+
+        <section id="funcionamiento">
+            <h2>¿Cómo funciona?</h2>
+            <p>Puedes introducir los alimentos que deseas consumir y un tipo de menú.</p>
+            <p>Si lo prefieres, puedes dejar que la aplicación decida por ti el menú y planifique tus compras.</p>
+        </section>
+
+        <section id="beneficios">
+            <h2>Beneficios de usar Vegeez</h2>
+            <p>Disfruta de una alimentación equilibrada sin preocuparte por la planificación.</p>
+            <p>Ahorra tiempo y dinero con una lista de compras optimizada.</p>
+        </section>
+
+        <section id="cta">
+            <h2>Empieza ahora</h2>
+            <p><strong>¡Déjanos hacer el trabajo por ti!</strong></p>
+            <button onclick="irAPaginaCalculo()">Comenzar</button>
+        </section>
+    </main>
+    
+    <script>
+        function irAPaginaCalculo() {
+            window.location.href = "calculo.html";
+        }
+    </script>
+</body>
+</html>

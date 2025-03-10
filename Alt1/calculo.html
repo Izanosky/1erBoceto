@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Si lees esto dale like</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 1.5rem;
+            font-size: 2rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            padding: 12px;
+            font-size: 1rem;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        #menuSemanalResultado, #comidaResultado, #resultado {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            text-align: left;
+        }
+        h2 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Generador de Menu</h1>
+</header>
+
+<main>
+    <!-- Menú Semanal Automático -->
+    <section>
+        <h2>Menú Semanal Automático</h2>
+        <button onclick="generarMenuSemanal()">Generar Menú Semanal</button>
+        <div id="menuSemanalResultado"></div>
+    </section>
+
+    <!-- Sugerencia de Comidas con Ingredientes -->
+    <section>
+        <h2>¿Qué puedo cocinar con estos ingredientes?</h2>
+        <input type="text" id="ingredientes" placeholder="Ej: arroz, pollo, tomate, cebolla...">
+        <button onclick="sugerirComidas()">Sugerir Comidas</button>
+        <div id="comidaResultado"></div>
+    </section>
+</main>
+
+<script>
+    const apiKey = 'AIzaSyBneChdWrx0-fKIcJfTYnTAtfX5sIiRBZE'; // Reemplaza con tu clave de API de Google
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+    // Función para generar un menú semanal automático usando Gemini
+    async function generarMenuSemanal() {
+        const resultado = document.getElementById('menuSemanalResultado');
+        resultado.innerHTML = "<p>Generando menú semanal...</p>";
+
+        try {
+            const prompt = `Genera un menú semanal con comida y cena para cada día de la semana. 
+                Incluye platos variados y saludables. 
+                Devuelve el resultado en formato de lista HTML.`;
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: prompt
+                        }]
+                    }]
+                })
+            });
+
+            const data = await response.json();
+            if (data.candidates && data.candidates.length > 0) {
+                const textoGenerado = data.candidates[0].content.parts[0].text;
+                resultado.innerHTML = `<h3>Menú Semanal:</h3>${textoGenerado}`;
+            } else {
+                resultado.innerHTML = "<p>No se recibió una respuesta válida de la API.</p>";
+            }
+        } catch (error) {
+            console.error("Error al generar el menú:", error);
+            resultado.innerHTML = `<p>Hubo un error al generar el menú. Inténtalo de nuevo más tarde.</p>`;
+        }
+    }
+
+    // Función para sugerir comidas basadas en los ingredientes usando Gemini
+    async function sugerirComidas() {
+        const ingredientes = document.getElementById('ingredientes').value.trim();
+        if (!ingredientes) {
+            alert("Por favor, introduce tus ingredientes.");
+            return;
+        }
+
+        const resultado = document.getElementById('comidaResultado');
+        resultado.innerHTML = "<p>Generando sugerencias...</p>";
+
+        try {
+            const prompt = `Sugiere comidas que se puedan preparar con los siguientes ingredientes: ${ingredientes}. 
+                Devuelve el resultado en formato de lista HTML.`;
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: prompt
+                        }]
+                    }]
+                })
+            });
+
+            const data = await response.json();
+            if (data.candidates && data.candidates.length > 0) {
+                const textoGenerado = data.candidates[0].content.parts[0].text;
+                resultado.innerHTML = `<h3>Comidas sugeridas:</h3>${textoGenerado}`;
+            } else {
+                resultado.innerHTML = "<p>No se recibió una respuesta válida de la API.</p>";
+            }
+        } catch (error) {
+            console.error("Error al generar sugerencias:", error);
+            resultado.innerHTML = `<p>Hubo un error al generar sugerencias. Inténtalo de nuevo más tarde.</p>`;
+        }
+    }
+</script>
+
+</body>
+</html>
