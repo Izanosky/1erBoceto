@@ -1,3 +1,12 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    /* Tamaño base para unidades relativas */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-image: url('https://images.unsplash.com/photo-1592545287571-8afd34aada57?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
@@ -7,11 +16,12 @@ body {
     background-size: cover;
     color: #1b5e20;
     text-align: center;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
     position: relative;
     min-width: 320px;
 }
+
 body::before {
     content: "";
     position: fixed;
@@ -23,25 +33,33 @@ body::before {
     z-index: -1;
     min-height: 100vh;
 }
+
 header {
     background-color: #05E676;
     color: white;
-    padding: 2.5rem;
+    padding: 1.5rem;
+    /* Padding relativo */
     font-size: 2rem;
+    /* Tamaño de fuente relativo */
     font-weight: 600;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 main {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
-    padding: 60px 10%;
-    flex: 1;
+    gap: 2rem;
+    /* Espacio relativo */
+    padding: 2rem 10%;
+    /* Padding relativo */
 }
+
 section {
     background-color: white;
-    padding: 40px;
+    padding: 2rem;
+    /* Padding relativo */
     border-radius: 20px;
     width: 100%;
     max-width: 800px;
@@ -50,32 +68,45 @@ section {
     transition: transform 0.3s;
     position: relative;
 }
+
 section:hover {
     transform: translateY(-5px);
 }
+
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    /* Margen relativo */
     font-size: 1.8rem;
+    /* Tamaño de fuente relativo */
     font-weight: 600;
     color: #05E62A;
 }
+
 p {
     line-height: 1.8;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+    /* Margen relativo */
     font-size: 1.2rem;
+    /* Tamaño de fuente relativo */
     font-weight: 300;
     color: #4a4a4a;
 }
-input, button {
-    padding: 14px 30px;
+
+input,
+button {
+    padding: 0.75rem 1.5rem;
+    /* Padding relativo */
     font-size: 1.2rem;
-    margin: 10px 0;
+    /* Tamaño de fuente relativo */
+    margin: 0.5rem 0;
+    /* Margen relativo */
     border-radius: 8px;
     border: 1px solid #ddd;
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
 }
+
 button {
     background-color: #35E605;
     color: white;
@@ -83,32 +114,84 @@ button {
     transition: background 0.3s, transform 0.2s;
     border: none;
 }
+
 button:hover {
     background-color: #05E676;
     transform: scale(1.05);
 }
-#menuSemanalResultado, #comidaResultado, #resultado {
+
+#menuSemanalResultado,
+#comidaResultado,
+#resultado {
     background-color: #f9f9f9;
-    padding: 20px;
+    padding: 1.5rem;
+    /* Padding relativo */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
+    margin-top: 1rem;
+    /* Margen relativo */
     text-align: left;
 }
+
 footer {
     background-color: #05E676;
     color: white;
-    padding: 2rem;
-    margin-top: 60px;
+    padding: 1.5rem;
+    /* Padding relativo */
     text-align: center;
     font-size: 1rem;
+    /* Tamaño de fuente relativo */
     margin-top: auto;
 }
+
 footer a {
     color: white;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 0.5rem;
+    /* Margen relativo */
 }
+
 footer a:hover {
     text-decoration: underline;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    /* Alinea verticalmente el botón y el título */
+    gap: 1rem;
+    /* Espacio entre el botón y el título */
+    max-width: 1200px;
+    /* Limita el ancho del contenido */
+    margin: 0 auto;
+    /* Centra el contenido */
+}
+
+#volverInicio {
+    background-color: #ffffff;
+    color: #05E676;
+    padding: 0.5rem 1rem;
+    /* Padding más pequeño */
+    font-size: 0.9rem;
+    /* Tamaño de fuente más pequeño */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-right: auto;
+    /* Empuja el título a la derecha */
+}
+
+#volverInicio:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* Estilos para el título */
+header h1 {
+    margin: 0;
+    /* Elimina el margen predeterminado */
+    font-size: 2rem;
+    /* Tamaño de fuente relativo */
 }

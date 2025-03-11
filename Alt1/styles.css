@@ -1,3 +1,9 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-image: url('https://images.unsplash.com/photo-1592545287571-8afd34aada57?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
@@ -7,11 +13,12 @@ body {
     background-size: cover;
     color: #1b5e20;
     text-align: center;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
     position: relative;
     min-width: 320px; /* Evita que la página se haga demasiado pequeña */
 }
+
 body::before {
     content: "";
     position: fixed; /* Fija el desenfoque al fondo */
@@ -23,6 +30,7 @@ body::before {
     z-index: -1;
     min-height: 100vh;
 }
+
 header {
     background-color: #05E676;
     color: white;
@@ -31,14 +39,17 @@ header {
     font-weight: 600;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 main {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
     gap: 50px;
     padding: 60px 10%;
-    flex: 1;
 }
+
 section {
     background-color: white;
     padding: 40px;
@@ -50,15 +61,18 @@ section {
     transition: transform 0.3s;
     position: relative;
 }
+
 section:hover {
     transform: translateY(-5px);
 }
+
 h2 {
     margin-bottom: 20px;
     font-size: 1.8rem;
     font-weight: 600;
     color: #05E62A;
 }
+
 p {
     line-height: 1.8;
     margin-bottom: 15px;
@@ -66,6 +80,7 @@ p {
     font-weight: 300;
     color: #4a4a4a;
 }
+
 button {
     background-color: #35E605;
     color: white;
@@ -77,10 +92,12 @@ button {
     font-weight: 600;
     transition: background 0.3s, transform 0.2s;
 }
+
 button:hover {
     background-color: #05E676;
     transform: scale(1.05);
 }
+
 .features {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
@@ -88,6 +105,7 @@ button:hover {
     gap: 20px; /* Espacio entre las características */
     margin-top: 40px;
 }
+
 .feature {
     background-color: #8AEB9A;
     padding: 20px;
@@ -97,32 +115,36 @@ button:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
+
 .feature:hover {
     transform: translateY(-5px);
 }
+
 .feature h3 {
     font-size: 1.4rem;
     color: #ffffff; /* Texto blanco */
     margin-bottom: 10px;
 }
+
 .feature p {
     font-size: 1rem;
     color: #000000;
 }
+
 footer {
     background-color: #05E676;
     color: white;
     padding: 2rem;
-    margin-top: 60px;
     text-align: center;
     font-size: 1rem;
-    margin-top: auto;
 }
+
 footer a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
 }
+
 footer a:hover {
     text-decoration: underline;
 }
