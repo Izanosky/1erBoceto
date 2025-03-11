@@ -6,87 +6,6 @@
     <title>Bienvenido a Vegeez</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1592545287571-8afd34aada57?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Nueva imagen de fondo */
-            background-repeat: no-repeat; /* Asegurarse de que la imagen no se repita */
-            background-position: center center; /* Centrar la imagen */
-            background-attachment: fixed; /* Hacer que la imagen de fondo se quede fija al hacer scroll */
-            background-size: cover; /* Asegurarse de que la imagen cubra todo el fondo */
-            color: #1b5e20;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            z-index: -1;
-        }
-        header {
-            background-color: #2e7d32;
-            color: white;
-            padding: 2.5rem;
-            font-size: 2rem;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 50px;
-            padding: 60px 10%;
-        }
-        section {
-            background-color: white;
-            padding: 40px;
-            border-radius: 20px;
-            width: 60%;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-            position: relative;
-        }
-        section:hover {
-            transform: translateY(-5px);
-        }
-        h2 {
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #388e3c;
-        }
-        p {
-            line-height: 1.8;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: #4a4a4a;
-        }
-        button {
-            background-color: #43a047;
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.2s;
-        }
-        button:hover {
-            background-color: #2e7d32;
-            transform: scale(1.05);
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -111,12 +30,40 @@
             <p>Ahorra tiempo y dinero con una lista de compras optimizada.</p>
         </section>
 
+        <div class="features">
+            <div class="feature">
+                <h3>Planificación Inteligente</h3>
+                <p>Genera menús semanales basados en tus preferencias y necesidades dietéticas.</p>
+            </div>
+            <div class="feature">
+                <h3>Listas de Compra</h3>
+                <p>Obtén listas de compra automáticas para ahorrar tiempo en el supermercado.</p>
+            </div>
+            <div class="feature">
+                <h3>Recetas Saludables</h3>
+                <p>Accede a una amplia variedad de recetas saludables y fáciles de preparar.</p>
+            </div>
+            <div class="feature">
+                <h3>Sostenibilidad</h3>
+                <p>Promueve una alimentación sostenible y respetuosa con el medio ambiente.</p>
+            </div>
+        </div>
+
         <section id="cta">
             <h2>Empieza ahora</h2>
             <p><strong>¡Déjanos hacer el trabajo por ti!</strong></p>
             <button onclick="irAPaginaCalculo()">Comenzar</button>
         </section>
     </main>
+    
+    <footer>
+        <p>© 2025 Vegeez. Todos los derechos reservados.</p>
+        <p>
+            <a href="#">Política de Privacidad</a> | 
+            <a href="#">Términos de Servicio</a> | 
+            <a href="#">Contacto</a>
+        </p>
+    </footer>
     
     <script>
         function irAPaginaCalculo() {
