@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chef Virtual</title>
+    <title>Vegeez - Tu Chef Virtual</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #00a724;
+            --primary-light: #02c22c;
+            --dark: #121212;
+            --dark-light: #1f1f1f;
+            --dark-medium: #333;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+            background-color: var(--dark);
+            color: var(--text-light);
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,182 +37,710 @@
             align-items: center;
             min-height: 100vh;
         }
+
         header {
-            background-color: #1f1f1f;
-            color: #00bcd4;
+            background-color: var(--dark-light);
             width: 100%;
             padding: 20px 0;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow);
+            position: relative;
+            border-bottom: 3px solid var(--primary);
         }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .button-inicio {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: auto;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .button-inicio i {
+            margin-right: 8px;
+        }
+
+        .button-inicio:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-50%) scale(1.05);
+        }
+
         main {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            padding: 20px;
+            gap: 30px;
+            padding: 30px;
             width: 100%;
             max-width: 1200px;
         }
+
         .card {
-            background-color: #1f1f1f;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-color: var(--dark-light);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             text-align: center;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
         }
-        input, button {
-            padding: 10px;
-            font-size: 1rem;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #333;
-            width: 100%;
-            max-width: 400px;
-            box-sizing: border-box;
-            background-color: #333;
-            color: #ffffff;
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+
+        .input-group {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        input,
         button {
-            background-color: #00bcd4;
-            color: #121212;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            border: none;
-        }
-        button:hover {
-            background-color: #0097a7;
-        }
-        #menuSemanalResultado, #comidaResultado {
-            background-color: #333;
-            padding: 20px;
+            padding: 15px;
+            font-size: 1rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            margin-top: 10px;
-            text-align: left;
-            color: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            background-color: var(--dark-medium);
+            color: var(--text-light);
+            transition: var(--transition);
         }
+
+        input {
+            border: 1px solid #444;
+            padding-left: 40px;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(2, 194, 44, 0.2);
+        }
+
+        .file-input-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin: 15px 0;
+        }
+
+        .file-input-label {
+            background-color: var(--dark-medium);
+            color: var(--text-light);
+            padding: 15px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 500px;
+            transition: var(--transition);
+            border: 1px dashed #444;
+        }
+
+        .file-input-label:hover {
+            background-color: #444;
+            border-color: var(--primary);
+        }
+
+        .file-input-label i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .file-input {
+            position: absolute;
+            font-size: 100px;
+            opacity: 0;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+        }
+
+        #vistaPrevia {
+            margin: 15px 0;
+            max-width: 300px;
+            margin: 15px auto;
+        }
+
+        #vistaPrevia img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            background-color: var(--primary);
+            color: var(--dark);
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        button i {
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        #menuSemanalResultado,
+        #comidaResultado {
+            background-color: var(--dark-medium);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+            text-align: left;
+            color: var(--text-light);
+            transition: var(--transition);
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Estos estilos se aplicarán al contenido generado por la API */
+        #menuSemanalResultado h1, #comidaResultado h1,
+        #menuSemanalResultado h2, #comidaResultado h2,
+        #menuSemanalResultado h3, #comidaResultado h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        #menuSemanalResultado p, #comidaResultado p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        #menuSemanalResultado ul, #comidaResultado ul,
+        #menuSemanalResultado ol, #comidaResultado ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        #menuSemanalResultado li, #comidaResultado li {
+            margin-bottom: 8px;
+        }
+
+        #menuSemanalResultado table, #comidaResultado table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        #menuSemanalResultado th, #comidaResultado th,
+        #menuSemanalResultado td, #comidaResultado td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #444;
+            color: var(--text-light);
+        }
+
+        #menuSemanalResultado th, #comidaResultado th {
+            background-color: #444;
+            color: var(--text-light);
+        }
+
+        .resultado-visible {
+            opacity: 1 !important;
+            height: auto !important;
+            padding: 25px !important;
+        }
+
+        .loader {
+            border: 4px solid var(--dark-medium);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1.5s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         h2 {
             margin-bottom: 15px;
-            font-size: 1.5rem;
-            color: #00bcd4;
+            font-size: 1.8rem;
+            color: var(--primary);
         }
+
+        h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
         p {
-            color: #b0b0b0;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #444;
+            color: var(--text-light);
+        }
+
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: var(--dark-medium);
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab:hover {
+            background-color: #444;
+        }
+
+        .tab.active {
+            background-color: #444;
+            border-bottom: 3px solid var(--primary);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        footer {
+            width: 100%;
+            background-color: var(--dark-light);
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 3px solid var(--primary);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            main {
+                padding: 15px;
+            }
+            
+            #menuSemanalResultado table, #comidaResultado table {
+                font-size: 0.9rem;
+            }
+            
+            #menuSemanalResultado th, #comidaResultado th,
+            #menuSemanalResultado td, #comidaResultado td {
+                padding: 8px;
+            }
         }
     </style>
 </head>
+
 <body>
+    <header>
+        <button onclick="window.location.href='Inicio.html'" class="button-inicio">
+            <i class="fas fa-home"></i> Inicio
+        </button>
+        <div class="logo-container">
+            <i class="fas fa-leaf logo"></i>
+            <h1>Vegeez</h1>
+        </div>
+    </header>
 
-<header>
-    <h1>Chef Virtual</h1>
-</header>
+    <main>
+        <!-- Sugerencia de Comidas con Ingredientes -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-utensils card-icon"></i>
+                <h2>¿Qué puedo cocinar?</h2>
+            </div>
+            <p>Introduce los ingredientes que tienes disponibles o sube una foto para obtener sugerencias personalizadas.</p>
+            
+            <div class="tab-container">
+                <div class="tab active" onclick="cambiarTab('texto')">Por texto</div>
+                <div class="tab" onclick="cambiarTab('imagen')">Por imagen</div>
+            </div>
+            
+            <div id="texto-tab" class="tab-content active">
+                <div class="input-group">
+                    <i class="fas fa-shopping-basket"></i>
+                    <input type="text" id="ingredientes" placeholder="Ej: arroz, tomate, cebolla, garbanzos...">
+                </div>
+            </div>
+            
+            <div id="imagen-tab" class="tab-content">
+                <div class="file-input-container">
+                    <label class="file-input-label">
+                        <i class="fas fa-camera"></i> Subir foto de ingredientes
+                        <input type="file" id="imagenIngredientes" accept="image/*" onchange="mostrarVistaPrevia(event)" class="file-input">
+                    </label>
+                </div>
+                <div id="vistaPrevia"></div>
+            </div>
+            
+            <button onclick="sugerirComidas()">
+                <i class="fas fa-search"></i> Buscar recetas
+            </button>
+            
+            <div class="loader" id="comidaLoader"></div>
+            <div id="comidaResultado"></div>
+        </div>
 
-<main>
-    <!-- Menú Semanal Automático -->
-    <div class="card">
-        <h2>Generar Menú Semanal</h2>
-        <p>Obtén un menú semanal completo con comidas y cenas variadas.</p>
-        <button onclick="generarMenuSemanal()">Generar Menú</button>
-        <div id="menuSemanalResultado"></div>
-    </div>
+        <!-- Menú Semanal Automático -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-calendar-alt card-icon"></i>
+                <h2>Plan Semanal Personalizado</h2>
+            </div>
+            <p>Obtén un menú semanal completo con comidas variadas y nutritivas adaptadas a tus necesidades.</p>
+            
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="number" id="personas" placeholder="Número de personas" min="1" max="10" value="1">
+            </div>
+            
+            <div class="input-group">
+                <i class="fas fa-ban"></i>
+                <input type="text" id="restricciones" placeholder="Restricciones alimentarias (ej: sin gluten, vegano...)">
+            </div>
+            
+            <button onclick="generarMenuSemanal()">
+                <i class="fas fa-magic"></i> Generar Plan Semanal
+            </button>
+            
+            <div class="loader" id="menuLoader"></div>
+            <div id="menuSemanalResultado"></div>
+        </div>
+    </main>
 
-    <!-- Sugerencia de Comidas con Ingredientes -->
-    <div class="card">
-        <h2>¿Qué puedo cocinar?</h2>
-        <p>Introduce los ingredientes que tienes y te sugeriremos recetas.</p>
-        <input type="text" id="ingredientes" placeholder="Ej: arroz, pollo, tomate, cebolla...">
-        <button onclick="sugerirComidas()">Sugerir Comidas</button>
-        <div id="comidaResultado"></div>
-    </div>
-</main>
+    <footer>
+        <p>&copy; 2025 Vegeez - Desarrollado con pasión para comidas saludables</p>
+    </footer>
 
-<script>
-    const apiKey = 'AIzaSyBneChdWrx0-fKIcJfTYnTAtfX5sIiRBZE'; // Reemplaza con tu clave de API de Google
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    <script>
+        const apiKey = 'AIzaSyBneChdWrx0-fKIcJfTYnTAtfX5sIiRBZE'; // Reemplaza con tu clave de API de Google
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
-    // Función para generar un menú semanal automático usando Gemini
-    async function generarMenuSemanal() {
-        const resultado = document.getElementById('menuSemanalResultado');
-        resultado.innerHTML = "<p>Generando menú semanal...</p>";
-
-        try {
-            const prompt = `Genera un menú semanal con comida y cena para cada día de la semana. 
-                Incluye platos variados y saludables. 
-                Devuelve el resultado en formato de lista.`;
-
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: prompt
-                        }]
-                    }]
-                })
-            });
-
-            const data = await response.json();
-            if (data.candidates && data.candidates.length > 0) {
-                const textoGenerado = data.candidates[0].content.parts[0].text;
-                resultado.innerHTML = `<h3>Menú Semanal:</h3><pre>${textoGenerado}</pre>`;
+        // Cambio de tabs
+        function cambiarTab(tab) {
+            // Resetear todas las tabs
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Activar la tab seleccionada
+            if (tab === 'texto') {
+                document.querySelector('.tab:nth-child(1)').classList.add('active');
+                document.getElementById('texto-tab').classList.add('active');
             } else {
-                resultado.innerHTML = "<p>No se recibió una respuesta válida de la API.</p>";
+                document.querySelector('.tab:nth-child(2)').classList.add('active');
+                document.getElementById('imagen-tab').classList.add('active');
             }
-        } catch (error) {
-            console.error("Error al generar el menú:", error);
-            resultado.innerHTML = `<p>Hubo un error al generar el menú. Inténtalo de nuevo más tarde.</p>`;
-        }
-    }
-
-    // Función para sugerir comidas basadas en los ingredientes usando Gemini
-    async function sugerirComidas() {
-        const ingredientes = document.getElementById('ingredientes').value.trim();
-        if (!ingredientes) {
-            alert("Por favor, introduce tus ingredientes.");
-            return;
         }
 
-        const resultado = document.getElementById('comidaResultado');
-        resultado.innerHTML = "<p>Generando sugerencias...</p>";
+        // Vista previa de imagen
+        function mostrarVistaPrevia(event) {
+            const vistaPrevia = document.getElementById('vistaPrevia');
+            vistaPrevia.innerHTML = '';
+            
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    vistaPrevia.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
 
-        try {
-            const prompt = `Sugiere comidas que se puedan preparar con los siguientes ingredientes: ${ingredientes}. 
-                Devuelve el resultado en formato de lista.`;
-
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: prompt
-                        }]
-                    }]
-                })
+        // Función para limpiar y aplicar estilos al HTML generado
+        function formatearRespuestaHTML(html) {
+            // Contenedor temporal para parsear el HTML
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            
+            // Asegurar que los estilos sean coherentes con nuestro diseño
+            const elementos = tempDiv.querySelectorAll('*');
+            elementos.forEach(el => {
+                // Remover atributos de estilo inline que puedan interferir
+                if (el.hasAttribute('style')) {
+                    el.removeAttribute('style');
+                }
+                
+                // Asegurarse de que los enlaces se abran en nueva pestaña
+                if (el.tagName === 'A') {
+                    el.setAttribute('target', '_blank');
+                    el.setAttribute('rel', 'noopener noreferrer');
+                }
             });
-
-            const data = await response.json();
-            if (data.candidates && data.candidates.length > 0) {
-                const textoGenerado = data.candidates[0].content.parts[0].text;
-                resultado.innerHTML = `<h3>Comidas sugeridas:</h3><pre>${textoGenerado}</pre>`;
-            } else {
-                resultado.innerHTML = "<p>No se recibió una respuesta válida de la API.</p>";
-            }
-        } catch (error) {
-            console.error("Error al generar sugerencias:", error);
-            resultado.innerHTML = `<p>Hubo un error al generar sugerencias. Inténtalo de nuevo más tarde.</p>`;
+            
+            return tempDiv.innerHTML;
         }
-    }
-</script>
 
+        // Función para generar un menú semanal
+        async function generarMenuSemanal() {
+            const resultado = document.getElementById('menuSemanalResultado');
+            const loader = document.getElementById('menuLoader');
+            const personas = document.getElementById('personas').value || 1;
+            const restricciones = document.getElementById('restricciones').value || "ninguna";
+            
+            // Ocultar resultado anterior y mostrar loader
+            resultado.classList.remove('resultado-visible');
+            loader.style.display = 'block';
+            
+            try {
+                const prompt = `Genera un menú semanal con desayuno, comida y cena para cada día de la semana para ${personas} persona(s). 
+                Considera estas restricciones alimentarias: ${restricciones}.
+                Incluye platos variados, saludables y con buen aporte nutricional.
+                Incluye algunos datos de calorías aproximadas y macronutrientes.
+                Organiza la información en una tabla HTML bien formateada.
+                Añade consejos de preparación y almacenamiento.
+                No uses estilos inline en el HTML.
+                Esto va de cara a un usuario, no uses terminos informaticos.`;
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: prompt
+                            }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                // Ocultar loader
+                loader.style.display = 'none';
+                
+                if (data.candidates && data.candidates.length > 0) {
+                    const textoGenerado = data.candidates[0].content.parts[0].text;
+                    resultado.innerHTML = formatearRespuestaHTML(textoGenerado);
+                    
+                    // Mostrar el resultado con animación
+                    setTimeout(() => {
+                        resultado.classList.add('resultado-visible');
+                    }, 100);
+                } else {
+                    resultado.innerHTML = "<p>No se recibió una respuesta válida. Por favor, intenta nuevamente.</p>";
+                    resultado.classList.add('resultado-visible');
+                }
+            } catch (error) {
+                console.error("Error al generar el menú:", error);
+                loader.style.display = 'none';
+                resultado.innerHTML = `<p>Hubo un error al generar el menú. Por favor, intenta nuevamente en unos minutos.</p>`;
+                resultado.classList.add('resultado-visible');
+            }
+        }
+
+        // Función para sugerir comidas basadas en ingredientes
+        async function sugerirComidas() {
+            const ingredientes = document.getElementById('ingredientes').value.trim();
+            const resultado = document.getElementById('comidaResultado');
+            const loader = document.getElementById('comidaLoader');
+            
+            // Verificar si hay ingredientes o imagen
+            if (!ingredientes && !document.getElementById('imagenIngredientes').files[0]) {
+                alert("Por favor, introduce ingredientes o sube una imagen.");
+                return;
+            }
+            
+            // Ocultar resultado anterior y mostrar loader
+            resultado.classList.remove('resultado-visible');
+            loader.style.display = 'block';
+
+            try {
+                let prompt;
+                if (ingredientes) {
+                    prompt = `Actúa como un chef experto y sugiere 3-5 recetas saludables que se puedan preparar con estos ingredientes: ${ingredientes}.
+                    Para cada receta incluye:
+                    - Nombre atractivo
+                    - Ingredientes adicionales que podrían necesitarse
+                    - Instrucciones breves de preparación
+                    - Tiempo aproximado de preparación
+                    - Valor nutricional aproximado
+                    - Una sugerencia de ingrediente alternativo en caso de faltar alguno
+                    
+                    Devuelve el resultado en formato HTML bien estructurado, usando secciones claras para cada receta.
+                    No uses estilos inline en el HTML.
+                    Esto va de cara a un usuario, no uses terminos informaticos.`;
+                } else {
+                    prompt = `Sugiere 3-5 recetas saludables, variadas y sencillas.
+                    Para cada receta incluye:
+                    - Nombre atractivo
+                    - Lista de ingredientes
+                    - Instrucciones breves de preparación
+                    - Tiempo aproximado de preparación
+                    - Valor nutricional aproximado
+                    
+                    Devuelve el resultado en formato HTML bien estructurado, usando secciones claras para cada receta.
+                    No uses estilos inline en el HTML.`;
+                }
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: prompt
+                            }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                // Ocultar loader
+                loader.style.display = 'none';
+                
+                if (data.candidates && data.candidates.length > 0) {
+                    const textoGenerado = data.candidates[0].content.parts[0].text;
+                    resultado.innerHTML = formatearRespuestaHTML(textoGenerado);
+                    
+                    // Mostrar el resultado con animación
+                    setTimeout(() => {
+                        resultado.classList.add('resultado-visible');
+                    }, 100);
+                } else {
+                    resultado.innerHTML = "<p>No se recibió una respuesta válida. Por favor, intenta nuevamente.</p>";
+                    resultado.classList.add('resultado-visible');
+                }
+            } catch (error) {
+                console.error("Error al generar sugerencias:", error);
+                loader.style.display = 'none';
+                resultado.innerHTML = `<p>Hubo un error al generar sugerencias. Por favor, intenta nuevamente en unos minutos.</p>`;
+                resultado.classList.add('resultado-visible');
+            }
+        }
+    </script>
 </body>
+
 </html>
